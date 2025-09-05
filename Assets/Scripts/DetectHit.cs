@@ -21,6 +21,8 @@ public class DetectHit : MonoBehaviour
         if (ballInInner)
         {
             print("Perfect Hit!");
+            // when hit for the first time, start moving the target on the y axis
+            StartTargetMovement();
             return;
         }
         if (ballInOuter)
@@ -28,5 +30,10 @@ public class DetectHit : MonoBehaviour
             print("Hit!");
             return;
         }
+    }
+    
+    private void StartTargetMovement()
+    {
+        GetComponent<TargetMovement>().StartMoving();
     }
 }
