@@ -5,6 +5,7 @@ public class DetectHit : MonoBehaviour
     [SerializeField] OnTriggerEvent outerTrig;
     [SerializeField] OnTriggerEvent innerTrig;
 
+    [SerializeField] private Timer timer;
     private bool ballInInner = false;
     private bool ballInOuter = false;
 
@@ -21,6 +22,7 @@ public class DetectHit : MonoBehaviour
         if (ballInInner)
         {
             ScoreManager.Instance.AddScore(10);
+            timer.StartTimer();
             print("Perfect Hit!");
             // when hit for the first time, start moving the target on the y axis
             StartTargetMovement();

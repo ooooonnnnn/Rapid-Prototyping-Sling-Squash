@@ -9,7 +9,8 @@ public class Timer : MonoBehaviour
     public event Action OnTimeUp;
     
     private float currentTime;
-    private bool isRunning = true;
+    private bool isRunning = false;
+    private bool hasStarted = false;
 
     private void Start()
     {
@@ -34,6 +35,32 @@ public class Timer : MonoBehaviour
         UpdateTimerUI();
     }
 
+    public void StartTimer()
+    {
+        if (hasStarted) return;
+        hasStarted = true;
+        isRunning = true;
+    }
+
+    public void PauseTimer() => isRunning = false;
+    public void ResetTimer(float newTime)
+    {
+        startTime = newTime;
+        currentTime = newTime;
+        isRunning = false;
+        hasStarted = false;
+        UpdateTimerUI();
+    }
+
+    public void ResetAndStart(float newTime)
+    {
+        ResetTimer(newTime);
+        StartTimer();
+    }
+
+    public bool IsRunning => isRunning;
+    public bool HasStarted => hasStarted;
+    
     private void UpdateTimerUI()
     {
         if (timerText != null)
@@ -43,13 +70,5 @@ public class Timer : MonoBehaviour
             timerText.text = $"{minutes:00}:{seconds:00}";
         }
     }
-
-    public void ResetTimer(float newTime)
-    {
-        currentTime = newTime;
-        isRunning = true;
-        UpdateTimerUI();
-    }
-
     public float GetTime() => currentTime;
 }
