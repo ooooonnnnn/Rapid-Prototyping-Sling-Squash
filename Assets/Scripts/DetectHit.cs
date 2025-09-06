@@ -29,6 +29,7 @@ public class DetectHit : MonoBehaviour
         if (ballInOuter)
         {
             print("Hit!");
+            reTarget.MakeInvisible();
             return;
         }
     }

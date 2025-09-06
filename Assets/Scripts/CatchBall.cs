@@ -43,7 +43,7 @@ public class CatchBall : MonoBehaviour
     private void TryGrab (InputAction.CallbackContext context)
     {
         isGrabbing = true;
-        reTarget.MakeVisible();
+       
     }
 
     private void StopGrab(InputAction.CallbackContext context)
@@ -67,6 +67,7 @@ public class CatchBall : MonoBehaviour
         {
             joint.enabled = true;
             OnGrab?.Invoke();
+            reTarget.MakeVisible();
         }
     }
 
