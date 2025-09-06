@@ -4,6 +4,7 @@ public class DetectHit : MonoBehaviour
 {
     [SerializeField] OnTriggerEvent outerTrig;
     [SerializeField] OnTriggerEvent innerTrig;
+    [SerializeField] private RemoveTarget reTarget;
 
     private bool ballInInner = false;
     private bool ballInOuter = false;
@@ -21,8 +22,8 @@ public class DetectHit : MonoBehaviour
         if (ballInInner)
         {
             print("Perfect Hit!");
-            // when hit for the first time, start moving the target on the y axis
-            StartTargetMovement();
+            StartTargetMovement();// when hit for the first time, start moving the target on the y axis
+            reTarget.MakeInvisible();
             return;
         }
         if (ballInOuter)
@@ -36,4 +37,5 @@ public class DetectHit : MonoBehaviour
     {
         GetComponent<TargetMovement>().StartMoving();
     }
+    
 }
