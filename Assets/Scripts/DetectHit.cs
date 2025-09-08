@@ -4,6 +4,7 @@ public class DetectHit : MonoBehaviour
 {
     [SerializeField] OnTriggerEvent outerTrig;
     [SerializeField] OnTriggerEvent innerTrig;
+    [SerializeField] private RemoveTarget reTarget;
 
     [SerializeField] private Timer timer;
     private bool ballInInner = false;
@@ -24,14 +25,15 @@ public class DetectHit : MonoBehaviour
             ScoreManager.Instance.AddScore(10);
             timer?.StartTimer();
             print("Perfect Hit!");
-            // when hit for the first time, start moving the target on the y axis
-            StartTargetMovement();
+            StartTargetMovement();// when hit for the first time, start moving the target on the y axis
+            reTarget.MakeInvisible();
             return;
         }
         if (ballInOuter)
         {
             ScoreManager.Instance.AddScore(5);
             print("Hit!");
+            reTarget.MakeInvisible();
             return;
         }
     }
@@ -40,4 +42,5 @@ public class DetectHit : MonoBehaviour
     {
         GetComponent<TargetMovement>().StartMoving();
     }
+    
 }

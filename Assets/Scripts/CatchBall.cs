@@ -8,6 +8,7 @@ public class CatchBall : MonoBehaviour
     [SerializeField] private GameObject ball;
 
     private bool isGrabbing = false;
+    [SerializeField] private RemoveTarget reTarget;
     public event Action OnGrab;
 
     private InputSystem_Actions inputActions;
@@ -61,6 +62,7 @@ public class CatchBall : MonoBehaviour
     private void TryGrab(InputAction.CallbackContext _)
     {
         isGrabbing = true;
+       
     }
 
     private void StopGrab(InputAction.CallbackContext _)
@@ -85,6 +87,7 @@ public class CatchBall : MonoBehaviour
         {
             joint.enabled = true;
             OnGrab?.Invoke();
+            reTarget.MakeVisible();
         }
     }
 }
