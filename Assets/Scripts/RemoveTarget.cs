@@ -64,15 +64,11 @@ public class RemoveTarget : MonoBehaviour
     public void MakeVisible()
     {
         SetVisibility(true);
-
-        
     }
 
     public void MakeInvisible()
     {
         SetVisibility(false);
-        
-        
     }
 
     public bool IsVisible => isVisible; // property to see visible state
