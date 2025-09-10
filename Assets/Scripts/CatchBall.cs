@@ -9,6 +9,7 @@ public class CatchBall : MonoBehaviour
 
     private bool isGrabbing = false;
     [SerializeField] private RemoveTarget reTarget;
+    [SerializeField] private TargetSpawner targetSpawner;
     public event Action OnGrab;
 
     private InputSystem_Actions inputActions;
@@ -88,6 +89,7 @@ public class CatchBall : MonoBehaviour
             joint.enabled = true;
             OnGrab?.Invoke();
             reTarget.MakeVisible();
+            targetSpawner.SpawnNewTargetSet();
         }
     }
 }
