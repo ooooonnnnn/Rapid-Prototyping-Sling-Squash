@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 1990607838603726718}
   - component: {fileID: 544485751470528402}
   - component: {fileID: 8557969219921249531}
+  - component: {fileID: 1720100452093578477}
+  - component: {fileID: -8779810748805995042}
   m_Layer: 0
   m_Name: TargetDown
   m_TagString: Untagged
@@ -150,3 +152,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2d56495c96bb6f4ca5c0bad1cc46a3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PooledTarget
+--- !u!114 &1720100452093578477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1686069436312346364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d9906aa7b869754497096e6ef14b08a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RemoveTarget
+  renderers:
+  - {fileID: 1990607838603726718}
+  collider2Ds:
+  - {fileID: 544485751470528402}
+  startVisible: 1
+  affectColliders: 1
+--- !u!114 &-8779810748805995042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1686069436312346364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7529b75b14d212498c43856fd78c586, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DetectHit
+  outerTrig: {fileID: 0}
+  innerTrig: {fileID: 0}
+  reTarget: {fileID: 0}
+  timer: {fileID: 0}

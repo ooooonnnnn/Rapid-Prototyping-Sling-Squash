@@ -4,11 +4,13 @@ public class DetectHit : MonoBehaviour
 {
     [SerializeField] OnTriggerEvent outerTrig;
     [SerializeField] OnTriggerEvent innerTrig;
+    [SerializeField] OnTriggerEvent spawnTrig;
     [SerializeField] private RemoveTarget reTarget;
 
     [SerializeField] private Timer timer;
     private bool ballInInner = false;
     private bool ballInOuter = false;
+    private bool ballInSpawn = false;
 
     private void Awake()
     {
@@ -16,6 +18,8 @@ public class DetectHit : MonoBehaviour
         outerTrig.onTriggerExit += _ => ballInOuter = false;
         innerTrig.onTriggerEnter += _ => ballInInner = true;
         innerTrig.onTriggerExit += _ => ballInInner = false;
+        spawnTrig.onTriggerEnter += _ => ballInSpawn = true;
+        spawnTrig.onTriggerExit += _ => ballInSpawn = false;
     }
 
     public void TryHit()
@@ -35,6 +39,11 @@ public class DetectHit : MonoBehaviour
             print("Hit!");
             reTarget.MakeInvisible();
             return;
+        }
+
+        if (ballInSpawn)
+        {
+            reTarget.MakeInvisible();
         }
     }
     

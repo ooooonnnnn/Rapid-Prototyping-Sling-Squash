@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7189165401043941973}
   - component: {fileID: 9071306433004086890}
   - component: {fileID: 2823459449874102798}
+  - component: {fileID: 7150477655373950711}
   m_Layer: 0
   m_Name: TargetUp
   m_TagString: Untagged
@@ -150,3 +151,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2d56495c96bb6f4ca5c0bad1cc46a3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PooledTarget
+--- !u!114 &7150477655373950711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8048553665202633609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d9906aa7b869754497096e6ef14b08a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RemoveTarget
+  renderers:
+  - {fileID: 7189165401043941973}
+  collider2Ds:
+  - {fileID: 9071306433004086890}
+  startVisible: 1
+  affectColliders: 1
