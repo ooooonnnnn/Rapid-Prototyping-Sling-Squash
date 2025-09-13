@@ -102,6 +102,12 @@ public class TargetSpawner : MonoBehaviour
         target.name = targetName;
         target.SetActive(true);
         
+        PooledTarget pooledTarget = target.GetComponent<PooledTarget>();
+        if (pooledTarget != null)
+        {
+            pooledTarget.OnSpawn();
+        }
+        
         activeTargets.Add(target);
         
         Debug.Log($"Spawned {targetName} at position: {target.transform.position}");

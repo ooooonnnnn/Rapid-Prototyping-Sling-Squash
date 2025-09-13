@@ -15,7 +15,7 @@ public class RemoveTarget : MonoBehaviour
     private bool isVisible;
     private bool[] originalCollider2DStates;
 
-    private void awake()
+    private void Awake()
     {
         if (renderers == null)
             renderers = GetComponentInChildren<Renderer[]>();
