@@ -19,6 +19,7 @@ public class DetectHit : MonoBehaviour
     private bool ballInOuter = false;
     private bool ballInSpawn = false;
     private bool isSpawnedTarget = false;
+    private static int timesHit;
 
     private void Awake()
     {
@@ -84,6 +85,7 @@ public class DetectHit : MonoBehaviour
             Debug.Log("Perfect Hit!");
             StartTargetMovement();
             reTarget?.MakeInvisible();
+            timesHit++;
             return;
         }
 
@@ -92,6 +94,7 @@ public class DetectHit : MonoBehaviour
             ScoreManager.Instance.AddScore(5);
             Debug.Log("Hit!");
             reTarget?.MakeInvisible();
+            timesHit++;
             return;
         }
 
@@ -114,6 +117,20 @@ public class DetectHit : MonoBehaviour
         ScoreManager.Instance.AddScore(5);
         reTarget?.MakeInvisible(); 
         Debug.Log("MakeInvisible called");
+        timesHit++;
         return;
     }
+
+    public static int TimesHit()
+    {
+        return timesHit;
+    }
+
+    public static void ResetHits()
+    {
+        timesHit = 0;
+    }
+    
+    
+    // if both targets are hit before "reloading" (player holding the ball) then the player gets extra points
 }

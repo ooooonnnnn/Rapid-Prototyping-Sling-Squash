@@ -13,6 +13,8 @@ public class CatchBall : MonoBehaviour
     public event Action OnGrab;
 
     private InputSystem_Actions inputActions;
+    
+    
 
     [SerializeField, HideInInspector] private DistanceJoint2D joint;
     [SerializeField, HideInInspector] private float maxDistance;
@@ -90,6 +92,21 @@ public class CatchBall : MonoBehaviour
             OnGrab?.Invoke();
             reTarget.MakeVisible();
             targetSpawner.SpawnNewTargetSet();
+           // print($"times hit is {DetectHit.TimesHit()}");
+
+            if (DetectHit.TimesHit() == 2) // 2 means 2 targets were hit before "reloading"
+            {
+                print("GOT THE 2 HIT COMBO - TIMES HIT IS 2");
+                ScoreManager.Instance.AddScore(10);
+                DetectHit.ResetHits(); // go back to 0
+            }
+            else
+            {
+                DetectHit.ResetHits();
+            }
+            
+            
+            
         }
     }
 }
