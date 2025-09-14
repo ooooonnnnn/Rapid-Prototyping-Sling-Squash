@@ -15,6 +15,11 @@ public class CatchBall : MonoBehaviour
 
     [SerializeField, HideInInspector] private DistanceJoint2D joint;
     [SerializeField, HideInInspector] private float maxDistance;
+    
+    [Header("Catch Feedback")]
+    [SerializeField] private SpriteRenderer playerSR;
+    [SerializeField] private Color catchColor = Color.green;
+    private Color _originalColor;
 
     private void OnValidate()
     {
@@ -32,6 +37,8 @@ public class CatchBall : MonoBehaviour
         if (!joint) joint = GetComponent<DistanceJoint2D>();
         joint.enabled = false;
 
+        _originalColor = playerSR.color;
+        
         inputActions = new InputSystem_Actions();
         // Do NOT call inputActions.Enable() here (would enable all maps incl. UI).
     }
@@ -62,12 +69,14 @@ public class CatchBall : MonoBehaviour
     private void TryGrab(InputAction.CallbackContext _)
     {
         isGrabbing = true;
-       
     }
 
     private void StopGrab(InputAction.CallbackContext _)
     {
         isGrabbing = false;
+        
+        // revert color when releasing the grab
+        playerSR.color = _originalColor;
     }
 
     private void FixedUpdate()
@@ -85,6 +94,7 @@ public class CatchBall : MonoBehaviour
         float distance = Vector2.Distance(transform.position, ball.transform.position);
         if (distance <= maxDistance)
         {
+            playerSR.color = catchColor;
             joint.enabled = true;
             OnGrab?.Invoke();
             reTarget.MakeVisible();
