@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class DetectHit : MonoBehaviour
@@ -20,6 +21,11 @@ public class DetectHit : MonoBehaviour
     private bool ballInSpawn = false;
     private bool isSpawnedTarget = false;
     private static int timesHit;
+
+    public GameObject impactScoreTextPrefab;
+
+    [SerializeField] private int outerTargetScore = 5;
+    [SerializeField] private int innerTargetScore = 10;
 
     private void Awake()
     {
@@ -81,6 +87,9 @@ public class DetectHit : MonoBehaviour
         if (ballInInner)
         {
             ScoreManager.Instance.AddScore(10);
+            GameObject impactScoreText =
+                Instantiate(impactScoreTextPrefab, TargetManager.impactPos, Quaternion.identity);
+            impactScoreText.GetComponent<TextMeshPro>().text = "+" + innerTargetScore;
             timer?.StartTimer();
             Debug.Log("Perfect Hit!");
             StartTargetMovement();
@@ -95,6 +104,10 @@ public class DetectHit : MonoBehaviour
             Debug.Log("Hit!");
             reTarget?.MakeInvisible();
             timesHit++;
+            GameObject impactScoreText =
+                Instantiate(impactScoreTextPrefab, TargetManager.impactPos, Quaternion.identity);
+            impactScoreText.GetComponent<TextMeshPro>().text = "+" + outerTargetScore;
+
             return;
         }
 
