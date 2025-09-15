@@ -8,7 +8,7 @@ public class TargetManager : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        currentTarget?.TryHit();
         impactPos = collision.GetContact(0).point;
+        currentTarget?.TryHit();
     }
 }
