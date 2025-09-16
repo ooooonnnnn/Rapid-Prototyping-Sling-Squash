@@ -21,7 +21,7 @@ public class DetectHit : MonoBehaviour
     private bool ballInSpawn = false;
     private bool isSpawnedTarget = false;
     private static int timesHit;
-
+    
     public GameObject impactScoreTextPrefab;
 
     [SerializeField] private int outerTargetScore = 5;
@@ -128,6 +128,9 @@ public class DetectHit : MonoBehaviour
     {
         Debug.Log("Hit spawn target!");
         ScoreManager.Instance.AddScore(5);
+        GameObject impactScoreText =
+            Instantiate(impactScoreTextPrefab, TargetSpawner.spawnTargetTextPos, Quaternion.identity);
+        impactScoreText.GetComponent<TextMeshPro>().text = "+" + outerTargetScore;
         reTarget?.MakeInvisible(); 
         Debug.Log("MakeInvisible called");
         timesHit++;

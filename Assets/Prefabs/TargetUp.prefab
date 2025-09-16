@@ -171,6 +171,9 @@ MonoBehaviour:
   spawnTrig: {fileID: 7227400332266425058}
   reTarget: {fileID: 4247698199406168837}
   timer: {fileID: 0}
+  impactScoreTextPrefab: {fileID: 2650356091928277380, guid: a82c1466b352d8e42938247d52bfcaf2, type: 3}
+  outerTargetScore: 5
+  innerTargetScore: 10
 --- !u!114 &7227400332266425058
 MonoBehaviour:
   m_ObjectHideFlags: 0

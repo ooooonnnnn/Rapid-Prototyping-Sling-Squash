@@ -27,6 +27,8 @@ public class TargetSpawner : MonoBehaviour
 
     private Random random;
 
+    public static Vector2 spawnTargetTextPos;
+
     private void Awake()
     {
         InitializePools();
@@ -98,6 +100,7 @@ public class TargetSpawner : MonoBehaviour
         }
 
         target.transform.position = GetRandomPositionInBounds(bounds);
+        spawnTargetTextPos = target.transform.position;
         target.transform.SetParent(bounds);
         target.name = targetName;
         target.SetActive(true);
